@@ -1,1 +1,235 @@
 
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body{
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background-color: #1b1919;
+}
+
+.container{
+    position: relative;
+    max-width: 900px;
+    width: 100%;
+    background: #1E1E1E;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.container header{
+    font-size: 2.25rem;
+    color: #fff;
+    font-weight: 600;
+    text-align: center;
+    position: relative;
+}
+
+.container .form{
+    margin-top: 30px;
+}
+
+.form .column1{
+    display: flex;
+    column-gap: 25px;
+    justify-content: space-between;
+}
+
+#col-date{
+    width: 800px;
+}
+
+#date{
+    text-align: center;
+}
+
+.form .column2, .column3, .column4, .column5, .column6{
+    display: flex;
+    column-gap: 50px;
+}
+
+
+.form .input-box{
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 5px;
+}
+
+.input-box label{
+    color: #a2e4f5;
+}
+
+.form .input-box input{
+    position: relative;
+    height: 50px;
+    width: 100%;
+    outline: none;
+    font-size: 1rem;
+    background-color: #1E1E1E;
+    color: #fff;
+    margin-top: 8px;
+    border: 1px solid #108cc6;
+    border-radius: 6px;
+    padding: 0 15px;
+}
+
+.name-container #title{
+    width: 85px;
+    height: 50px;
+    background-color: transparent;
+    color: #fff;
+    font-size: 20px;
+    border: 1px solid #108cc6;
+    cursor: pointer;
+    border-radius: 6px;
+    padding: 2px;
+    text-align: center;
+}
+
+.name-container #title option{
+    background-color: #1E1E1E;
+}
+
+h2{
+    color: #09567a;
+    margin-top: 10px;
+}
+
+.h2New{
+    margin-bottom: 15px;
+    margin-top: 25px;
+}
+
+.form .services-div{
+    margin-top: 5px;
+}
+
+.form .collection-div{
+    margin-top: 5px;
+}
+
+.services-div, .accessories-div, .problems-div, .collection-div, .warranty-div p{
+    color: #a2e4f5;
+    font-size: 1rem;
+    margin-bottom: 8px;
+}
+
+.services-div, .accessories-div, .problems-div, .collection-div, .warranty-div label{
+    color: #fff;
+}
+
+.form :where(.services-option, .services){
+    display: flex;
+    align-items: center;
+    column-gap: 50px;
+    margin-left: 12px;
+}
+
+.form :where(.collection-option, .collections){
+    display: flex;
+    align-items: center;
+    column-gap: 50px;
+    margin-left: 12px;
+}
+
+.form .services{
+    column-gap: 5px;
+}
+
+.form .collections{
+    column-gap: 5px;
+}
+
+.form .warranty{
+    column-gap: 5px;
+}
+
+.form :where(.services input, .services label) {
+    cursor: pointer;
+}
+
+.form :where(.collections input, .collections label) {
+    cursor: pointer;
+}
+
+.form :where(.warranty input, .warranty label) {
+    cursor: pointer;
+}
+
+#clickCompany, #clickIndivitual:checked{
+    accent-color: #108cc6;
+}
+
+/* Devices */
+
+.form .accessories-div, .problems-div{
+    margin-top: 25px;
+}
+
+.problems-div, .warranty-div label{
+    color: #fff;
+    margin-right: 50px;
+}
+
+.warranty-div{
+    line-height: 25px;
+}
+
+.check:checked{
+    accent-color: #09567a;
+}
+
+#problemName, #name, #accessoryName{ 
+    width: 600px;
+    margin-left: 10px;
+}
+
+p {
+    color: #a2e4f5;
+    margin-bottom: 10px;
+}
+
+#wp{
+    margin-top: 15px;
+}
+
+
+hr{
+    margin-top: 20px;
+    background-color: #a2e4f5;
+    height: 2px;
+    border: none;
+    margin-bottom: 10px;
+}
+
+#accessoryName{
+    margin-bottom: 10px;
+}
+
+.fa-circle-check {
+            font-size: 24px;
+            color: transparent;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+        .button-with-icon {
+            display: flex;
+            align-items: center;
+ }
+
+ .smallBox {
+      height: 60px;
+      width: 100%;
+      background: #0e5271;
+ }
+
