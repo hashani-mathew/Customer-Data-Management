@@ -64,12 +64,12 @@ Google Sheets was preferred because it provided a simple, accessible, and cost-e
 
 **Job Registration Sheet Structure**
 
-| Date & Time | Name | Phone Number | Email Address | Type | Company Name | Address | Device | Password | Brand & Model | Serial Number | Accessories | Problems | Warranty | Venue | Issued By | Collected By | Message Text | Mail Status | Receipt Link | Receipt PDF Complete | Status |
-|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+Job ID | Date & Time | Name | Phone Number | Email Address | Type | Company Name | Address | Device | Password | Brand & Model | Serial Number | Accessories | Problems | Warranty | Venue | Issued By | Collected By | Message Text | Mail Status | Receipt Link | Receipt PDF Complete | Status |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 
 **Job Completed Sheet Structure**
 
-| Name | Email Address | Phone Number | Address | Device | Problems | Brand & Model | Accessories | Warranty | Serial No | Technical Report | Venue | Delivery Date | Delivered By | Received By | Mail Status | Receipt Link | Receipt PDF Complete | Status |
-|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+Job ID | Name | Email Address | Phone Number | Address | Device | Problems | Brand & Model | Accessories | Warranty | Serial No | Technical Report | Venue | Delivery Date | Delivered By | Received By | Mail Status | Receipt Link | Receipt PDF Complete | Status |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 
 
