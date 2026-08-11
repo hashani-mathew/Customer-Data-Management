@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_top">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Completed Form</title>
+    <script src="https://kit.fontawesome.com/493d3e6eac.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/CSS/com_style.css">
+  </head>
+  <body>
+        <section class="container">
+          <div class="smallBox">
+        <header>Work Completed</header>
+          </div>
+        <form class="form" method="post" id="workCompletedForm" onsubmit="handleSubmit(); return false;">
+            <h2>General Details</h2>
+            <div class="column1">
+                <div class="input-box">
+                    <label for="referenceNumber">Reference Number</label>
+                    <input type="text" id="referenceNumber" name="referenceNumber" autocomplete="off" required value="SH24-" placeholder="Reference Number">
+                </div>
+                <div>
+                    <button id="sea-btn" type="button" onclick="findDetails()"><i class="fa-solid fa-magnifying-glass"></i></button>
+                </div>
+                <div class="input-box">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" placeholder="Name" autocomplete="off">
+                </div>
+            </div>    
+            <div class="column3">   
+                <div class="input-box">
+                    <label for="phoneNumber">WhatsApp Number</label>
+                    <input type="text" required value="+94" id="phoneNumber" name="phoneNumber" autocomplete="off">
+                </div>
+
+                <div class="input-box">
+                    <label for="email">Email Id</label>
+                    <input type="text" id="email" name="email" placeholder="Email Address " autocomplete="off">
+                </div>
+                <div class="input-box">
+                    <label for="address">Address</label>
+                    <input type="text" placeholder="Address" id="address" name="address" autocomplete="off">
+                </div>
+            </div>
+
+            <div class="column4">
+
+                <div class="input-box">
+                    <label>Problem</label>
+                    <input type="text" id="problemName" name="problemName" placeholder="Problem Name" autocomplete="off">
+                </div>
+
+                <div class="input-box">
+                    <label>Device Name</label>
+                    <input id="deviceName" name="deviceName" type="text" placeholder="Device Name" autocomplete="off">
+                </div>
+
+                <div class="input-box">
+                    <label>Accessories</label>
+                    <input type="text" id="accessoryName" name="accessoryName" placeholder="Accessory Name" autocomplete="off">
+                </div>
+
+            </div>
+
+            <div class="column5">
+
+                <div class="input-box">
+                    <label for="brandNmodel">Brand & Model</label>
+                    <input type="text" id="brandNmodel" name="brandNmodel" placeholder=" Brand & Model Name" autocomplete="off">
+                </div>
+                <div class="input-box">
+                    <label>Serial Number</label>
+                    <input type="text" id="serialNumber" name="serialNumber" placeholder=" Serial Number" autocomplete="off">
+                </div>
+                <div class="input-box">
+                    <label for="warranty">warranty</label>
+                    <input type="text" id="warranty" name="warranty" placeholder=" Wattanty" autocomplete="off">
+                </div>
+
+            </div>
+            
+            <div class="input-box">
+                <label for="technicalReport">Technical Report</label>
+                <input type="text" id="technicalReport" name="technicalReport" placeholder="Technical Report" autocomplete="off">
+            </div>
+            <hr>
+            <h2 class="h2New">Delivery Details</h2>
+            <div class="collection-div">
+                <p>Venue</p>
+                <div class="collection-option">
+                    <div class="collections">
+                        <input type="radio" name="venueType" value="Store" id="clickStore">
+                        <label for="clickStore">Store</label>
+                    </div>
+                    <div class="collections">
+                        <input type="radio" name="venueType" value="Customer Place" id="clickCustomerPlace">
+                        <label for="clickCustomerPlace">Customer Place</label>
+                    </div>
+                </div>
+            </div>
+            <div class="input-box" id="col-edit2">
+                <label for="deliveryDate">Delivery Date</label>
+                <input type="text" id="deliveryDate" name="deliveryDate" autocomplete="off" readonly>
+            </div>
+            <div class="column2">
+                <div class="input-box">
+                    <label for="deliveredBy">Delivered By</label>
+                    <input type="text" id="deliveredBy" name="deliveredBy" placeholder="Delivered By Whom" autocomplete="off">
+                </div>
+                <div class="input-box">
+                    <label for="receivedBy">Received By</label>
+                    <input type="text" id="receivedBy" name="receivedBy" placeholder="Received By Whom" autocomplete="off">
+                </div>
+            </div>
+
+<!-- Message Generater  -->
+                <div class="input-box">
+                    <label>Message Text</label>
+                    <textarea hidden placeholder="Message" id="message" name="message" rows="3"></textarea>
+                </div>
+
+<!-- Generate Message Button -->
+      <div class="button-with-icon">
+            <input type="button" style="background-color: #4c3b6d; cursor: pointer; border: 1px solid #664d98; padding: 3px; height: 30px; width: 150px; color: #fff; border-radius: 6px;" 
+            value="Generate Message" onclick="generateMessage()">
+            <i class="fa-solid fa-circle-check" id="messageGeneratedIcon1"></i>
+      </div>
+   
+            
+<!-- WhatsApp Link Generater -->
+                <div class="input-box">
+                    <label>Whatsapp Message</label>
+                    <textarea hidden placeholder="Whatsapp Message" id="waMessage" name="waMessage" rows="3"></textarea>
+                </div>
+
+<!-- Generate WhatsApp link -->
+      <div class="button-with-icon">     
+           <input style="background-color: #4c3b6d; border: 1px solid #664d98; padding: 3px; 
+            height: 30px; width: 180px; color: #fff; border-radius: 6px; cursor: pointer;" 
+            type="button" value="Generate Wa Message" onclick="generateWhatsappMessage()">
+            <i class="fa-solid fa-circle-check" id="messageGeneratedIcon"></i>
+      </div>
+
+            <br>
+            <button type="submit" id="submitBtn" style="background-color: #8852a1; border: 2px solid #664d98; padding: 3px; margin-top: 10px; height: 40px; width: 120px; color: #fff; border-radius: 30px; cursor: pointer;font-size: 1rem;">Submit</button>
+        </form>
+            <br>
+    </section>
+    <script>
+        function findDetails() {
+            const referenceNumber = document.getElementById("referenceNumber").value;
+            google.script.run.withSuccessHandler(populateForm).findDetails(referenceNumber);
+        }
+
+        function populateForm(data) {
+            if (data) {
+                document.getElementById("name").value = data.name;
+                document.getElementById("email").value = data.email;
+                document.getElementById("phoneNumber").value = data.phoneNumber;
+                document.getElementById("address").value = data.address;
+                document.getElementById("deviceName").value = data.deviceName;
+                document.getElementById("problemName").value = data.problemName;
+                document.getElementById("brandNmodel").value = data.brandNmodel;
+                document.getElementById("accessoryName").value = data.accessoryName;
+                document.getElementById("warranty").value = data.warranty;
+                document.getElementById("serialNumber").value = data.serialNumber;
+            } else {
+                alert("Reference number not found.");
+            }
+        }
+
+        function handleSubmit() {
+          const form = document.getElementById('workCompletedForm');
+            form.querySelector('button[type="submit"]').disabled = true; 
+            const formData = {
+                referenceNumber: document.getElementById("referenceNumber").value,
+                name: document.getElementById("name").value,
+                email: document.getElementById("email").value,
+                phoneNumber: document.getElementById("phoneNumber").value,
+                address: document.getElementById("address").value,
+                deviceName: document.getElementById("deviceName").value,
+                problemName: document.getElementById("problemName").value,
+                brandNmodel: document.getElementById("brandNmodel").value,
+                accessoryName: document.getElementById("accessoryName").value,
+                warranty: document.getElementById("warranty").value,
+                serialNumber: document.getElementById("serialNumber").value,
+                technicalReport: document.getElementById("technicalReport").value,
+                venueType: document.querySelector('input[name="venueType"]:checked').value,
+                deliveryDate: document.getElementById("deliveryDate").value,
+                deliveredBy: document.getElementById("deliveredBy").value,
+                receivedBy: document.getElementById("receivedBy").value,
+                message: document.getElementById("message").value,
+                waMessage: document.getElementById("waMessage").value
+            };
+            google.script.run.withSuccessHandler(submissionSuccess).submitForm(formData);
+
+        }
+
+//  Generate message
+        function generateMessage() {
+            var name = document.getElementById('name').value;
+            var deliveryDate = document.getElementById('deliveryDate').value;
+            var referenceNumber = document.getElementById('referenceNumber').value;
+            var phoneNumber = document.getElementById('phoneNumber').value;
+            var deviceName = document.getElementById('deviceName').value;
+            var accessoryName = document.getElementById('accessoryName').value;
+            var deliveredBy = document.getElementById('deliveredBy').value;
+            var receivedBy = document.getElementById('receivedBy').value;
+            
+            var message = `*Your Service Order Has Been Completed and Delivered!*\n\nDear ${name},\n\nWe are happy to inform you that your device has been successfully repaired and delivered.\n\nHere are the details of your order:\n\n✅ *Reference No:* ${referenceNumber}\n✅ *Device:* ${deviceName}\n✅ *Accessories:* ${accessoryName}\n✅ *Delivered Date:* ${deliveryDate}\n✅ *Delivered By:* ${deliveredBy}\n✅ *Received By:* ${receivedBy}\n\nWe have also attached your job completed receipt via Gmail. If you have any questions or need support, please don't hesitate to contact us.\n\nWe hope you are satisfied with our service. We would greatly appreciate it if you could take a moment to leave us a 5-star ⭐⭐⭐⭐⭐ review. Your feedback helps us improve our services and serve you better.\nwrite a review👇\nhttps://bit.ly/shtechinfo-review\n\nThank you, have a great day!\n\nBest regards,\n*Team SH TECHINFO*`;
+            
+            document.getElementById('message').value = message;
+
+            const messageTextarea = document.getElementById('message');
+            messageTextarea.value = message;
+            
+            const icon = document.getElementById('messageGeneratedIcon1');
+            icon.style.color = '#4c3b6d';
+        }
+
+//  Generate WhatsApp Message
+        function generateWhatsappMessage() {
+            var message = document.getElementById('message').value;
+            var phoneNumber = document.getElementById('phoneNumber').value;
+
+            var waMessage = `=HYPERLINK("https://api.whatsapp.com/send?phone=${phoneNumber}""&text=${message}","Send")`;
+
+            document.getElementById('waMessage').value = waMessage;
+
+            const waMessageTextarea = document.getElementById('waMessage');
+            waMessageTextarea.value = waMessage;
+            
+            const icon = document.getElementById('messageGeneratedIcon');
+            icon.style.color = '#4c3b6d';
+        }
+
+        function submissionSuccess() {
+            const form = document.getElementById('workCompletedForm');
+            form.querySelector('button[type="submit"]').disabled = false; 
+            alert("Form submitted successfully.");
+            form.reset(); 
+        }
+
+    function formatDate(date, locale, options) {
+      return new Intl.DateTimeFormat(locale, options).format(date);
+    }
+
+    let today = new Date();
+    let formattedDate = formatDate(today, 'en-GB', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
+
+    document.getElementById('deliveryDate').value = formattedDate;
+
+    document.getElementById('submitBtn').addEventListener('mouseover', function() {
+    this.style.backgroundColor = '#9b59b6'; 
+});
+
+document.getElementById('submitBtn').addEventListener('mouseout', function() {
+    this.style.backgroundColor = '#8e44ad'; 
+});
+
+document.getElementById('submitBtn').addEventListener('mousedown', function() {
+    this.style.backgroundColor = '#7d3c98'; 
+});
+
+document.getElementById('submitBtn').addEventListener('mouseup', function() {
+    this.style.backgroundColor = '#9b59b6'; 
+});
+
+    </script>
+  </body>
+</html>
