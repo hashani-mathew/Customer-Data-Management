@@ -64,31 +64,6 @@ Google Sheets was preferred because it provided a simple, accessible, and cost-e
 
 **Job Registration Sheet Structure**
 
-| Field | Description |
-|---|---|
-| Date & Time | Date and time of job registration |
-| Name | Customer name |
-| Phone Number | Customer contact number |
-| Email Address | Customer email address |
-| Type | Type of service/job |
-| Company Name | Customer/company name |
-| Address | Customer address |
-| Device | Device submitted for service |
-| Password | Device password |
-| Brand & Model | Device brand and model |
-| Serial Number | Device serial number |
-| Accessories | Accessories provided with the device |
-| Problems | Reported device problems |
-| Warranty | Warranty information |
-| Venue | Service/job venue |
-| Issued By | Staff member who accepted the device |
-| Collected By | Staff member responsible for collection |
-| Message Text | Customer notification message |
-| Mail Status | Email sending status |
-| Receipt Link | Link to generated receipt |
-| Receipt PDF Complete | PDF receipt generation status |
-| Status | Current job status |
-
-
-
-
+| Date & Time | Name | Phone Number | Email Address | Type | Company Name | Address | Device | Password | Brand & Model | Serial Number | Accessories | Problems | Warranty | Venue | Issued By | Collected By | Message Text | Mail Status | Receipt Link | Receipt PDF Complete | Status |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| | | | | | | | | | | | | | | | | | | | | | |
