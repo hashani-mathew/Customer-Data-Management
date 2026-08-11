@@ -5,6 +5,7 @@ An automated job registration and management system developed for **SH TECHINFO*
 ## Project Status
 
 *Completed and Operational*
+
 The system was successfully developed and submitted to SH TECHINFO on July 9, 2024.
 
 ## Project Objectives
