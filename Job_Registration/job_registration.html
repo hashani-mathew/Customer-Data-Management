@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_top">
+        <script src="https://kit.fontawesome.com/493d3e6eac.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="/CSS/reg_style.css">
+    <script>
+      function generateRefNumber() {
+        google.script.run.withSuccessHandler(function(refNumber) {
+          document.getElementById('referenceNumber').value = refNumber;
+        }).generateRefNumber();
+      }
+
+      function submitForm() {
+        var form = document.getElementById('orderForm');
+        var formData = {
+          referenceNumber: form.referenceNumber.value,
+          date: form.date.value,
+          title: form.title.value,
+          name: form.name.value,
+          phoneNumber: form.phoneNumber.value,
+          email: form.email.value,
+          type: form.type.value,
+          companyName: form.companyName.value,
+          address: form.address.value,
+          deviceName: form.deviceName.value,
+          devicePassword: form.devicePassword.value,
+          brandNmodel: form.brandNmodel.value,
+          serialNumber: form.serialNumber.value,
+          accessoryName: form.accessoryName.value,
+          problemName: form.problemName.value,
+          warranty: form.warranty.value,
+          venue: form.venue.value,
+          issuedBy: form.issuedBy.value,
+          collectedBy: form.collectedBy.value,
+          message: form.message.value,
+          waMessage: form.waMessage.value
+        };
+
+        google.script.run.withSuccessHandler(function(response) {
+          if (response.success) {
+            alert(response.message);
+            form.reset();
+            generateRefNumber(); 
+          } else {
+            alert("Error: " + response.message);
+          }
+        }).submitForm(formData);
+      }
+
+    function formatDate(date, locale, options) {
+    return new Intl.DateTimeFormat(locale, options).format(date);
+    }
+
+   function currentData() {
+    let today = new Date();
+
+    let formattedDate = formatDate(today, 'en-GB', { month: 'long', day: 'numeric', year: 'numeric' });
+    let formattedTime = formatDate(today, 'en-GB', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false });
+
+    let timezoneOffset = -today.getTimezoneOffset();
+    let sign = timezoneOffset >= 0 ? '+' : '-';
+    let hours = Math.floor(Math.abs(timezoneOffset) / 60);
+    let minutes = Math.abs(timezoneOffset) % 60;
+    let formattedOffset = `GMT${sign}${hours}:${minutes < 10 ? '0' : ''}${minutes}`;
+
+    let finalOutput = `${formattedDate}, ${formattedTime}`;
+
+    document.getElementById('date').value = finalOutput;
+
+    }
+
+      window.onload = function() {
+        generateRefNumber();
+        currentData();
+      }
+
+//  Generate message
+        function generateMessage() {
+            var name = document.getElementById('name').value;
+            var date = document.getElementById('date').value;
+            var referenceNumber = document.getElementById('referenceNumber').value;
+            var deviceName = document.getElementById('deviceName').value;
+            var accessoryName = document.getElementById('accessoryName').value;
+            var problemName = document.getElementById('problemName').value;
+
+            var message = `*Your Service Order Was Placed Successfully!*\n\nDear ${name},\n\nWelcome to SH TECHINFO!\n\nWe're excited to inform you that your service order has been ready for checkup.\n\n✅ *Reference No:* ${referenceNumber}\n✅ *Date:* ${date}\n✅ *Device:* ${deviceName}\n✅ *Accessories:* ${accessoryName}\n✅ *Problem:* ${problemName}\n\nWe have also attached your receipt via Gmail. If you have any questions or need support, please don't hesitate to contact us.\n\n*Please Note:* An inspection fee of Rs.1,500/= will apply if you decide not to proceed with repairs after a full checkup.\n\nThank you, have a great day!\n\nBest regards,\n*Team SH TECHINFO*`;
+            
+            document.getElementById('message').value = message;
+
+            const messageTextarea = document.getElementById('message');
+            messageTextarea.value = message;
+            
+            // Change the color of the icon to indicate message generation
+            const icon = document.getElementById('messageGeneratedIcon1');
+            icon.style.color = '#108cc6';
+        }
+
+//  Generate WhatsApp Message
+        function generateWhatsappMessage() {
+            var message = document.getElementById('message').value;
+            var phoneNumber = document.getElementById('phoneNumber').value;
+
+            var waMessage = `=HYPERLINK("https://api.whatsapp.com/send?phone=${phoneNumber}""&text=${message}","Send")`;
+
+            document.getElementById('waMessage').value = waMessage;
+
+            const waMessageTextarea = document.getElementById('waMessage');
+            waMessageTextarea.value = waMessage;
+            
+            // Change the color of the icon to indicate message generation
+            const icon = document.getElementById('messageGeneratedIcon');
+            icon.style.color = '#108cc6';
+        } 
+
+    </script>
+  </head>
+  <body>
+    <section class="container">
+      <div class="smallBox">
+      <header>Work Order Registration</header>
+      </div> 
+      <form id="orderForm" class="form">
+        <h2>General Details</h2>
+        <div class="column1">
+          <div class="input-box">
+            <label for="referenceNumber">Reference Number</label>
+            <input type="text" id="referenceNumber" name="referenceNumber" autocomplete="off" readonly>
+          </div>        
+          <div class="input-box" id="col-date">
+            <label for="date">Date</label>
+            <input type="text" id="date" name="date" autocomplete="off" readonly>
+          </div>
+        </div>
+        <div class="input-box">
+          <label for="name">Name</label>
+          <div class="name-container">
+            <select id="title" name="title">
+              <option value="Mr">Mr</option>
+              <option value="Miss">Ms</option>
+              <option value="Mrs">Mrs</option>
+            </select>
+            <input type="text" id="name" name="name" placeholder="Name" autocomplete="off">
+          </div>
+        </div>
+        <div class="column2">
+          <div class="input-box">
+            <label for="phoneNumber">WhatsApp Number</label>
+            <input type="text" required value="+94" id="phoneNumber" name="phoneNumber" autocomplete="off">
+          </div>
+          <div class="input-box">
+            <label for="email">Email Id</label>
+            <input type="text" id="email" name="email" placeholder="Email Address" autocomplete="off">
+          </div>
+        </div>
+        <hr>
+        <h2 class="h2New">Service Details</h2>          
+        <div class="services-div">
+          <p>Service for</p>
+          <div class="services-option">
+            <div class="services">
+              <input type="radio" name="type" value="Company" id="clickCompany">
+              <label for="clickCompany">Company</label>
+            </div>
+            <div class="services">
+              <input type="radio" name="type" value="Individual" id="clickIndividual">
+              <label for="clickIndividual">Individual</label>
+            </div>
+          </div>
+        </div>
+        <div class="column3">
+          <div class="input-box">
+            <label for="companyName">Company Name</label>
+            <input type="text" placeholder="Company Name" id="companyName" name="companyName" autocomplete="off">
+          </div>
+          <div class="input-box">
+            <label for="address">Address</label>
+            <input type="text" placeholder="Address" id="address" name="address" autocomplete="off">
+          </div>
+        </div>
+        <div class="column5">    
+          <div class="input-box">
+            <label>Device Name</label>
+            <input id="deviceName" name="deviceName" type="text" placeholder="Device Name" autocomplete="off">
+          </div>
+          <div class="input-box">
+            <label>Device Password</label>
+            <input type="text" name="devicePassword" id="devicePassword" placeholder="Password" autocomplete="off">
+          </div>
+        </div>
+        <div class="column4">
+          <div class="input-box">
+            <label for="brandNmodel">Brand & Model</label>
+            <input type="text" id="brandNmodel" name="brandNmodel" placeholder="Brand & Model Name" autocomplete="off">
+          </div>
+          <div class="input-box">
+            <label>Serial Number</label>
+            <input type="text" id="serialNumber" name="serialNumber" placeholder="Serial Number" autocomplete="off">
+          </div>
+        </div>
+        <div class="input-box">
+          <label>Accessories</label>
+          <input type="text" id="accessoryName" name="accessoryName" placeholder="Accessory Name" autocomplete="off">
+        </div>
+        <div class="input-box">
+          <label>Problem</label>
+          <input type="text" id="problemName" name="problemName" placeholder="Problem Name" autocomplete="off">
+        </div>
+        <div class="warranty-div">
+          <p id="wp">Warranty</p>
+          <div class="warranty-option">
+            <div class="warranty">
+              <input type="radio" name="warranty" value="Yes" id="clickYes">
+              <label for="clickYes">Yes</label>
+            </div>
+            <div class="warranty">
+              <input type="radio" name="warranty" value="No" id="clickNo">
+              <label for="clickNo">No</label>
+            </div>
+          </div>
+        </div>
+        <hr>
+        <h2 class="h2New">Collection Details</h2>          
+        <div class="collection-div">
+          <p>Venue</p>
+          <div class="collection-option">
+            <div class="collections">
+              <input type="radio" name="venue" value="Service Center" id="clickStore">
+              <label for="clickStore">Service Center</label>
+            </div>
+            <div class="collections">
+              <input type="radio" name="venue" value="Customer Place" id="clickCustomerPlace">
+              <label for="clickCustomerPlace">Customer Place</label>
+            </div>
+          </div>
+        </div>
+        <div class="column6">
+          <div class="input-box">
+            <label for="issuedBy">Issued By</label>
+            <input type="text" id="issuedBy" name="issuedBy" placeholder="Issued By Whom" autocomplete="off">
+          </div>
+          <div class="input-box">
+            <label for="collectedBy">Collected By</label>
+            <input type="text" id="collectedBy" name="collectedBy" placeholder="Collected By Whom" autocomplete="off">
+          </div>
+        </div>
+        <div class="input-box">
+          <label>Message Text</label>
+          <textarea hidden placeholder="Message" id="message" name="message" rows="3"></textarea>
+        </div>
+        <div class="button-with-icon">
+        <input type="button" style="background-color: #108cc6; cursor: pointer; border: 2px solid #108cc6; padding: 3px; height: 30px; width: 150px; color: #fff; border-radius: 10px;" value="Generate Message" onclick="generateMessage()">
+        <i class="fa-solid fa-circle-check" id="messageGeneratedIcon1"></i>
+      </div>
+<div class="input-box">
+<label>Whatsapp Message</label>
+<textarea hidden placeholder="Whatsapp Message" id="waMessage" name="waMessage" rows="3"></textarea>
+</div>
+<div class="button-with-icon">
+<input style="background-color: #108cc6; border: 2px solid #108cc6; padding: 3px; height: 30px; width: 180px; color: #fff; border-radius: 10px; cursor: pointer;" type="button" value="Whatsapp Message" onclick="generateWhatsappMessage()">
+        <i class="fa-solid fa-circle-check" id="messageGeneratedIcon"></i>
+</div>
+<br>
+<input style="background-color: #09567a; cursor: pointer; border: 2px solid #09567a; padding: 3px; height: 40px; width: 120px; color: #fff; border-radius: 30px;margin-top: 10px; font-size: 1rem;" type="button" value="Submit" onclick="submitForm()">
+</form>
+</section>
+  </body>
+</html>
